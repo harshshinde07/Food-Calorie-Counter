@@ -10,11 +10,13 @@
         <ImageView
             android:id="@+id/header_cover_image"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="140dp"
+            android:background="@color/colorAccent"
             android:scaleType="centerCrop" />
 
         <ImageButton
             android:id="@+id/user_profile_photo"
+
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_below="@+id/header_cover_image"
@@ -30,7 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/header_cover_image"
-            android:background="#e1e1e1"
+            android:background="#FFFFFF"
             android:elevation="4dp"
             android:paddingBottom="24dp">
 
@@ -53,20 +55,19 @@
                 android:layout_marginTop="76dp"
                 android:text="Shubham Mane"
                 android:textAllCaps="true"
-                android:textColor="#fff"
+                android:textColor="#f8e2"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/user_profile_city"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/user_profile_name"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="12dp"
-                android:text="spatil@gmail.com"
-                android:textColor="#fff"
-                android:textSize="14sp" />
+                android:text="Calorie Profile"
+                android:textColor="#f1e1"
+                android:textSize="16sp" />
         </RelativeLayout>
 
 
@@ -100,24 +101,24 @@
                         android:text="Personal Information" />
 
                     <TextView
-                        android:id="@+id/rollNo"
+                        android:id="@+id/txtName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
                         android:layout_margin="4dp"
 
-                        android:text="Roll No: "/>
+                        android:text="Name: " />
                     <TextView
-                        android:id="@+id/DOB"
+                        android:id="@+id/textAge"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
                         android:layout_margin="4dp"
 
-                        android:text="Date of Birth: "/>
+                        android:text="Age: " />
 
                     <TextView
-                        android:id="@+id/gender"
+                        android:id="@+id/TextGender"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
@@ -125,23 +126,13 @@
 
                         android:text="Gender: "/>
                     <TextView
-                        android:id="@+id/bGroup"
+                        android:id="@+id/textBGroup"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
                         android:layout_margin="4dp"
 
                         android:text="Blood Group: "/>
-                    <TextView
-                        android:id="@+id/admissionDate"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="8dp"
-                        android:layout_margin="4dp"
-
-                        android:text="Admission Date: "/>
-
-
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -165,22 +156,33 @@
                         android:background="#fff"
                         android:padding="8dp"
 
-                        android:text="Contact Information" />
+                        android:text="Health Information" />
 
                     <TextView
+                        android:id="@+id/textHeight"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
                         android:layout_margin="4dp"
 
-                        android:text="Address: Shivajinagar, Pune, 411005"/>
+                        android:text="Height: " />
                     <TextView
+                        android:id="@+id/textWeight"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
                         android:layout_margin="4dp"
 
-                        android:text="Phone Number: 9889765443"/>
+                        android:text="Weight: " />
+
+                    <TextView
+                        android:id="@+id/textGoal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp"
+                        android:padding="8dp"
+
+                        android:text="Daily Calorie Goal: " />
 
 
                 </LinearLayout>

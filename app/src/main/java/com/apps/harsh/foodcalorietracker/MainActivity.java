@@ -4,9 +4,9 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
@@ -14,7 +14,6 @@ import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -43,14 +42,14 @@ import java.util.Calendar;
 import java.util.List;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import io.github.yavski.fabspeeddial.FabSpeedDial;
 import io.github.yavski.fabspeeddial.SimpleMenuListenerAdapter;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+import nl.dionsegijn.konfetti.KonfettiView;
 
 public class MainActivity extends AppCompatActivity {
     BottomAppBar bar;
@@ -67,10 +66,12 @@ public class MainActivity extends AppCompatActivity {
     String f_name, f_date, f_fat, f_proteins, f_carbs, f_cal, f_amt, f_time;
     ProgressBar progressBar;
     ImageView ivImage;
+    public static final String MY_PREFS_NAME = "MyPrefsFile";
 
     static final int GALLERY_REQUEST = 1;
     static final int REQUEST_CAMERA = 0;
     private static int CURRENT_PAGE = 0;
+    KonfettiView viewKonfetti;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,6 +97,23 @@ public class MainActivity extends AppCompatActivity {
         mFatSecretSearch = new FatSecretSearch();
 
         getTodaysComsumption();
+        int flag = checkGoalCompleted();
+
+//        ViewGroup view =  findViewById(android.R.id.content);
+//        if (flag == 1) {
+////            CommonConfetti.rainingConfetti(view, new int[]{Color.BLACK, Color.BLUE, Color.RED, Color.CYAN, Color.YELLOW}).stream(5000);
+//            viewKonfetti.build()
+//                    .addColors(Color.YELLOW, Color.GREEN, Color.MAGENTA)
+//                    .setDirection(0.0, 359.0)
+//                    .setSpeed(1f, 5f)
+//                    .setFadeOutEnabled(true)
+//                    .setTimeToLive(2000L)
+//                    .addShapes(Shape.RECT, Shape.CIRCLE)
+//                    .addSizes(new Size(12, 5))
+//                    .setPosition(-50f, viewKonfetti.getWidth() + 50f, -50f, -50f)
+//                    .streamFor(300, 5000L);
+//        }
+
 
         fabSpeedDial = findViewById(R.id.fab_speed_dial);
 
@@ -112,7 +130,6 @@ public class MainActivity extends AppCompatActivity {
                         cameraIntent();
                         break;
                 }
-                //TODO: Start some activity
                 return false;
             }
         });
@@ -377,6 +394,8 @@ public class MainActivity extends AppCompatActivity {
                         recyclerView.setAdapter(mAdapter);
                         checkEmpty();
                         getTodaysComsumption();
+
+                        checkGoalCompleted();
                     }
                 });
                 builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
@@ -428,5 +447,54 @@ public class MainActivity extends AppCompatActivity {
         } else {
             return "Obese";
         }
+    }
+
+    public int checkGoalCompleted() {
+        int count = 0;
+        SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+        String restoredGoal = prefs.getString("prefGoal", null);
+        String currDate = DateFormat.getDateInstance().format(Calendar.getInstance().getTime());
+        String today = dbHelper.getDailyCal(currDate);
+        if (restoredGoal != null) {
+            float goal = Float.valueOf(restoredGoal);
+            float current = Float.valueOf(today);
+//            Toast.makeText(this, "OAL: "+ goal, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "CURRENT: "+ current, Toast.LENGTH_SHORT).show();
+            if (current >= goal) {
+                // get prompts.xml view
+                count = 1;
+                LayoutInflater li = LayoutInflater.from(MainActivity.this);
+                View promptsView = li.inflate(R.layout.goal_dialog, null);
+//                viewKonfetti = findViewById(R.id.viewKonfetti);
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                        MainActivity.this);
+                // set prompts.xml to alert dialog builder
+                alertDialogBuilder.setView(promptsView);
+                // set dialog message
+                alertDialogBuilder
+                        .setCancelable(false)
+                        .setPositiveButton("Okay",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                    }
+                                });
+                // create alert dialog
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                // show it
+                alertDialog.show();
+//                viewKonfetti.build()
+//                        .addColors(Color.YELLOW, Color.GREEN, Color.MAGENTA)
+//                        .setDirection(0.0, 359.0)
+//                        .setSpeed(1f, 5f)
+//                        .setFadeOutEnabled(true)
+//                        .setTimeToLive(2000L)
+//                        .addShapes(Shape.RECT, Shape.CIRCLE)
+//                        .addSizes(new Size(12, 5))
+//                        .setPosition(-50f, viewKonfetti.getWidth() + 50f, -50f, -50f)
+//                        .streamFor(300, 5000L);
+            }
+        }
+        return count;
     }
 }

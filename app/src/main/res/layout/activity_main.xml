@@ -46,7 +46,10 @@
         app:backgroundTint="@color/colorPrimary"
         android:paddingStart="32dp"
         app:navigationIcon="@drawable/ic_poll_black_24dp"
-        app:fabAlignmentMode="center"/>
+        app:fabAlignmentMode="center"
+        app:fabCradleMargin="16dp"
+        app:fabCradleRoundedCornerRadius="8dp"
+        app:fabCradleVerticalOffset="8dp" />
 
     <io.github.yavski.fabspeeddial.FabSpeedDial
         android:id="@+id/fab_speed_dial"
@@ -61,7 +64,6 @@
         app:fabAlignmentMode="center"
         app:fabCradleVerticalOffset="8dp"
         app:fabMenu="@menu/menu_main"
-        app:fabDrawable="@drawable/ic_add_black_24dp"
         app:miniFabBackgroundTint="@android:color/white"
         app:miniFabDrawableTint="?attr/colorPrimaryDark"
         app:miniFabTitleTextColor="?attr/colorPrimaryDark"

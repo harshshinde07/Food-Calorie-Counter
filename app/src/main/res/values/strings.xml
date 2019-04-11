@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Food Calorie Tracker</string>
+    <string name="next">NEXT</string>
+    <string name="start">DONE</string>
 </resources>
