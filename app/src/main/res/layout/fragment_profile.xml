@@ -97,6 +97,9 @@
                         android:layout_margin="4dp"
                         android:background="#fff"
                         android:padding="8dp"
+                        android:textAllCaps="true"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
 
                         android:text="Personal Information" />
 
@@ -105,6 +108,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
+                        android:textAllCaps="true"
                         android:layout_margin="4dp"
 
                         android:text="Name: " />
@@ -113,6 +117,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
+                        android:textAllCaps="true"
                         android:layout_margin="4dp"
 
                         android:text="Age: " />
@@ -122,6 +127,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
+                        android:textAllCaps="true"
                         android:layout_margin="4dp"
 
                         android:text="Gender: "/>
@@ -130,6 +136,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
+                        android:textAllCaps="true"
                         android:layout_margin="4dp"
 
                         android:text="Blood Group: "/>
@@ -155,6 +162,9 @@
                         android:layout_margin="4dp"
                         android:background="#fff"
                         android:padding="8dp"
+                        android:textAllCaps="true"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
 
                         android:text="Health Information" />
 
@@ -163,6 +173,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
+                        android:textAllCaps="true"
                         android:layout_margin="4dp"
 
                         android:text="Height: " />
@@ -171,6 +182,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
+                        android:textAllCaps="true"
                         android:layout_margin="4dp"
 
                         android:text="Weight: " />
@@ -180,6 +192,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
+                        android:textAllCaps="true"
                         android:padding="8dp"
 
                         android:text="Daily Calorie Goal: " />

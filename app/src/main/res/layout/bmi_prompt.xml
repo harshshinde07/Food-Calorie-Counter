@@ -25,6 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter weight"
+        android:layout_margin="4dp"
         android:padding="4dp">
 
         <requestFocus />
@@ -35,6 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter height"
+        android:layout_margin="4dp"
         android:padding="4dp" />
 
 </LinearLayout>
